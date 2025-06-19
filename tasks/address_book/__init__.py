@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-"
 
-__title__ = 'Home Work 06'
+__title__ = 'Address book'
 __author__ = 'Roman'
 
-from tasks.address_book import AddressBook, Record
+
+from .ab import AddressBook, Record
 
 __all__ = ['AddressBook', 'Record']
