@@ -13,4 +13,7 @@ __all__ = [
     'ContactPhoneNotFound',
     'ContactPhoneAlreadyExist',
     'ContactPhoneValueError',
+    'ContactEmailNotFound',
+    'ContactEmailAlreadyExist',
+    'ContactEmailValueError',
 ]
