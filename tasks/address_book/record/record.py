@@ -119,16 +119,16 @@ class Record:
         # Add phone numbers if given, removing duplicates
         if isinstance(phones, list):
             for phone in phones:
-                if self._find_phone(phone) is None:
+                if self.__find_phone(phone) is None:
                     self.add_phone(phone)
         # Add emails if given, removing duplicates
         if isinstance(emails, list):
             for email in emails:
-                if self._find_email(email) is None:
+                if self.__find_email(email) is None:
                     self.add_email(email)
 
-    def _find_phone(self, phone: str) -> Optional[Phone]:
-        """ Protected method for searching the phone number
+    def __find_phone(self, phone: str) -> Optional[Phone]:
+        """ Private method for searching the phone number
 
         :param phone: phone number (string, mandatory)
         :return: phone field, if found (Phone, optional)
@@ -138,8 +138,8 @@ class Record:
         # Find and return by phone number
         return next((p for p in self.phones if p.value == phone), None)
 
-    def _find_email(self, email: str) -> Optional[Email]:
-        """ Protected method for searching the email
+    def __find_email(self, email: str) -> Optional[Email]:
+        """ Private method for searching the email
 
         :param email: email (string, mandatory)
         :return: email field, if found (Email, optional)
@@ -155,7 +155,7 @@ class Record:
         :param phone: phone number (string, mandatory)
         :return: phone field, if found (Phone)
         """
-        phone_object: Optional[Phone] = self._find_phone(phone)
+        phone_object: Optional[Phone] = self.__find_phone(phone)
         if phone_object is None:
             # Phone number not found - raise the phone number not found exception
             raise ContactPhoneNotFound
@@ -167,7 +167,7 @@ class Record:
 
         :param phone: phone number (string, mandatory)
         """
-        if self._find_phone(phone):
+        if self.__find_phone(phone):
             # Phone number found - raise the phone number already exists exception
             raise ContactPhoneAlreadyExist()
         # Add the phone number
@@ -194,7 +194,7 @@ class Record:
         :param email: email (string, mandatory)
         :return: email field, if found (Email)
         """
-        email_object: Optional[Phone] = self._find_email(email)
+        email_object: Optional[Phone] = self.__find_email(email)
         if email_object is None:
             # Email not found - raise the email not found exception
             raise ContactEmailNotFound()
@@ -206,7 +206,7 @@ class Record:
 
         :param email: email (string, mandatory)
         """
-        if self._find_email(email):
+        if self.__find_email(email):
             # Email found - raise the email already exists exception
             raise ContactEmailAlreadyExist()
         # Add the email
